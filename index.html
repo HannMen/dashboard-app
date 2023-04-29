@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projecto 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="loader-container">
+        <div class="spiner"></div>
+    </div>
+
+    <div class="dates-container">
+        <select name="fechas" id="dateInterval">
+            <option value="" disabled selected>Selecciona una opcion</option>
+            <option value="2000-01-01">Año 2000</option>
+            <option value="2010-01-01">Año 2010</option>
+            <option value="2020-01-01">Año 2020</option>
+        </select>
+    </div>
+
+    <canvas id="myChart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

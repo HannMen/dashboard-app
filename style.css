@@ -1,0 +1,21 @@
+.loader-container {
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(78, 78, 78, 0.5);
+    position: absolute;
+    display: none;
+}
+
+.spiner {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    border-radius: 50%;
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    animation: spin 2s linear infinite;
+}
