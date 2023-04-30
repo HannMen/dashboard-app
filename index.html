@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid Tracker</title>
     <!-- Link para estilos css propios -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Link para estilos de bootstrap -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <h1>COVID-19 Tracker</h1>
-      </header>
-<main>
-    <!-- Contenedor del selector de país -->
-<div class="search-container">
-    <label for="select-country">Seleccionar país:</label>
-    <select id="select-country"></select>
-  </div>
+      <h1>COVID-19 Tracker</h1>
+    </header>
+    <main>
+      <!-- Contenedor del selector de país -->
+      <div class="search-container">
+        <label for="select-country">Seleccionar país:</label>
+        <select id="select-country"></select>
+      </div>
 
-  <div class="loader-container">
-    <div class="spiner"></div>
-</div>
-  
-  <!-- Contenedor del gráfico -->
-  <div class="chart-container">
-    <canvas id="myChart"></canvas>
-  </div>
-  
-  <!-- Botones -->
-  <div class="button-container">
-    <button type="button" class="btn btn-primary" id="confirmed-btn">Confirmados</button>
-    <button type="button" class="btn btn-secondary" id="recovered-btn">Recuperados</button>
-    <button type="button" class="btn btn-danger" id="deaths-btn">Fallecidos</button>
-  </div>
+      <!-- Contenedor del gráfico -->
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
 
+      <!-- Botones -->
+      <div class="button-container">
+        <button type="button" class="btn btn-primary" id="confirmed-btn">
+          Confirmados
+        </button>
+        <button type="button" class="btn btn-secondary" id="recovered-btn">
+          Recuperados
+        </button>
+        <button type="button" class="btn btn-danger" id="deaths-btn">
+          Fallecidos
+        </button>
+      </div>
 
-    <canvas id="myChart"></canvas>
-</main>
+      <canvas id="myChart"></canvas>
+    </main>
 
-<footer>
-    <p>
-      Datos obtenidos de <a href="https://api.covid19api.com/" target="_blank"
-        >la universidad John Hopkins</a
-      >
-    </p>
-  </footer>
+    <footer>
+      <p>
+        Datos obtenidos de
+        <a href="https://api.covid19api.com/" target="_blank"
+          >la universidad John Hopkins</a
+        >
+      </p>
+    </footer>
 
     <!-- Links para bootstrap local-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -61,5 +64,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
