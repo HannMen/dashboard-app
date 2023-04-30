@@ -1,9 +1,11 @@
+/* Estilos para todos los elementos */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   
+  /* Estilos para el cuerpo de la página */
   body {
     font-family: sans-serif;
     font-size: 16px;
@@ -11,6 +13,7 @@
     background-color: #f5f5f5;
   }
   
+  /* Estilos para el encabezado */
   header {
     background-color: #007bff;
     color: #fff;
@@ -22,6 +25,7 @@
     text-align: center;
   }
   
+  /* Estilos para el contenido principal */
   main {
     padding: 2rem;
     display: flex;
@@ -29,6 +33,7 @@
     align-items: center;
   }
   
+  /* Estilos para el contenedor de búsqueda de país */
   .search-container {
     display: flex;
     align-items: center;
@@ -47,6 +52,7 @@
     box-shadow: 0 0 0 1px #ced4da;
   }
   
+  /* Estilos para el contenedor del gráfico */
   .chart-container {
     width: 100%;
     max-width: 800px;
@@ -54,6 +60,7 @@
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   }
   
+  /* Estilos para el pie de página */
   footer {
     background-color: #343a40;
     color: #f5f5f5;
@@ -61,6 +68,7 @@
     text-align: center;
   }
   
+  /* Estilos para los enlaces */
   a {
     color: #f5f5f5;
     text-decoration: none;
