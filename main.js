@@ -1,111 +1,98 @@
-const loaderContainer = document.querySelector(".loader-container");
-const canvasChart = document.getElementById("myChart");
-const dateInterval = document.getElementById("dateInterval");
-let myChart = null;
-let dateStart = "2022-01-01";
-let moneyData = {};
+// Obtener la referencia a los elementos del DOM
+const selectCountry = document.getElementById("select-country");
+const myChart = document.getElementById("myChart");
+const confirmedBtn = document.getElementById("confirmed-btn");
+const recoveredBtn = document.getElementById("recovered-btn");
+const deathsBtn = document.getElementById("deaths-btn");
 
-function showLoader() {
-  loaderContainer.style.display = "flex";
-}
-
-function hideLoader() {
-  loaderContainer.style.display = "none";
-}
-
-function renderChart() {
-  myChart = new Chart(canvasChart, {
-    type: "bar",
-    data: {
-      labels: Object.keys(moneyData.rates),
-      datasets: [
-        {
-          label: "valor del Dolar",
-          data: Object.values(moneyData.rates),
-          backgroundColor: [
-            "rgba(255, 90, 132, 0.2)",
-            "rgba(34, 167, 240, 0.2)",
-            "rgba(253, 203, 110, 0.2)",
-            "rgba(45, 52, 54, 0.2)",
-            "rgba(231, 76, 60, 0.2)",
-            "rgba(26, 188, 156, 0.2)",
-            "rgba(236, 240, 241, 0.2)",
-            "rgba(155, 89, 182, 0.2)",
-            "rgba(22, 160, 133, 0.2)",
-            "rgba(243, 156, 18, 0.2)",
-            "rgba(52, 73, 94, 0.2)",
-            "rgba(46, 204, 113, 0.2)",
-            "rgba(149, 165, 166, 0.2)",
-            "rgba(241, 196, 15, 0.2)",
-            "rgba(52, 152, 219, 0.2)",
-            "rgba(211, 84, 0, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(191, 85, 236, 0.2)",
-            "rgba(230, 126, 34, 0.2)",
-            "rgba(142, 68, 173, 0.2)",
-            "rgba(231, 76, 60, 0.2)",
-            "rgba(243, 156, 18, 0.2)",
-            "rgba(26, 188, 156, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 90, 132, 1.1)",
-            "rgba(34, 167, 240, 1.1)",
-            "rgba(253, 203, 110, 1.1)",
-            "rgba(45, 52, 54, 1.1)",
-            "rgba(231, 76, 60, 1.1)",
-            "rgba(26, 188, 156, 1.1)",
-            "rgba(236, 240, 241, 1.1)",
-            "rgba(155, 89, 182, 1.1)",
-            "rgba(22, 160, 133, 1.1)",
-            "rgba(243, 156, 18, 1.1)",
-            "rgba(52, 73, 94, 1.1)",
-            "rgba(46, 204, 113, 1.1)",
-            "rgba(149, 165, 166, 1.1)",
-            "rgba(241, 196, 15, 1.1)",
-            "rgba(52, 152, 219, 1.1)",
-            "rgba(211, 84, 0, 1.1)",
-            "rgba(255, 206, 86, 1.1)",
-            "rgba(191, 85, 236, 1.1)",
-            "rgba(230, 126, 34, 1.1)",
-            "rgba(142, 68, 173,1.1)",
-            "rgba(231, 76, 60, 1.1)",
-            "rgba(243, 156, 18, 1.1)",
-            "rgba(26, 188, 156, 1.1)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-  });
-}
-
-function filterRates() {
-  Object.keys(moneyData.rates).forEach((rate) => {
-    if (moneyData.rates[rate] > 23) {
-      delete moneyData.rates[rate];
-    }
-  });
-}
-
-async function getMoney() {
-  showLoader();
-
-  const response = await axios.get(
-    `https://api.frankfurter.app/${dateStart}?base=USD`
-  );
-
-  moneyData = response.data;
-
-  filterRates();
-  renderChart();
-  hideLoader();
-}
-
-dateInterval.addEventListener("change", function (event) {
-  dateStart = event.target.value;
-  myChart.destroy();
-  getMoney();
+// Configuración inicial del gráfico
+const chart = new Chart(myChart, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Confirmados",
+        data: [],
+        borderColor: "#007bff",
+        fill: false
+      },
+      {
+        label: "Recuperados",
+        data: [],
+        borderColor: "#6c757d",
+        fill: false
+      },
+      {
+        label: "Fallecidos",
+        data: [],
+        borderColor: "#dc3545",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false
+  }
 });
 
-//Rutina principal
-getMoney();
+// Obtener la lista de países y agregarlos al menú desplegable
+axios.get("https://api.covid19api.com/countries")
+  .then(response => {
+    const countries = response.data;
+    countries.sort((a, b) => a.Country > b.Country ? 1 : -1);
+    countries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country.Slug;
+      option.textContent = country.Country;
+      selectCountry.appendChild(option);
+    });
+  })
+  .catch(error => console.log(error));
+
+// Función para obtener los datos de COVID-19 del país seleccionado y actualizar el gráfico
+function updateChartData(countrySlug, dataType) {
+  axios.get(`https://api.covid19api.com/total/dayone/country/${countrySlug}/status/${dataType}`)
+    .then(response => {
+      const data = response.data;
+      const labels = data.map(d => d.Date);
+      const values = data.map(d => d.Cases || d.Recovered || d.Deaths);
+      chart.data.labels = labels;
+      switch(dataType) {
+        case "confirmed":
+          chart.data.datasets[0].data = values;
+          break;
+        case "recovered":
+          chart.data.datasets[1].data = values;
+          break;
+        case "deaths":
+          chart.data.datasets[2].data = values;
+          break;
+      }
+      chart.update();
+    })
+    .catch(error => console.log(error));
+}
+
+// Event listener para actualizar el gráfico cuando se selecciona un país
+selectCountry.addEventListener("change", event => {
+  const countrySlug = event.target.value;
+  updateChartData(countrySlug, "confirmed");
+});
+
+// Event listeners para actualizar el gráfico según el botón presionado
+confirmedBtn.addEventListener("click", () => {
+  const countrySlug = selectCountry.value;
+  updateChartData(countrySlug, "confirmed");
+});
+
+recoveredBtn.addEventListener("click", () => {
+  const countrySlug = selectCountry.value;
+  updateChartData(countrySlug, "recovered");
+});
+
+deathsBtn.addEventListener("click", () => {
+  const countrySlug = selectCountry.value;
+  updateChartData(countrySlug, "deaths");
+});
