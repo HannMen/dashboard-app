@@ -14,26 +14,31 @@
 
 <body>
 
-    <div class="loader-container">
-        <div class="spiner"></div>
-    </div>
+    <body>
+    <header>
+        <h1>COVID-19 Tracker</h1>
+      </header>
 
-    <div class="dates-container">
-        <select name="fechas" id="dateInterval">
-            <option value="" disabled selected>Selecciona una opcion</option>
-            <option value="2000-01-01">Año 2000</option>
-            <option value="2010-01-01">Año 2010</option>
-            <option value="2020-01-01">Año 2020</option>
-        </select>
-    </div>
-
+    <!-- Contenedor del selector de país -->
+<div class="search-container">
+    <label for="select-country">Seleccionar país:</label>
+    <select id="select-country"></select>
+  </div>
+  
+  <!-- Contenedor del gráfico -->
+  <div class="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <!-- Botones -->
+  <div class="button-container">
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-secondary">Secondary</button>
     <button type="button" class="btn btn-success">Success</button>
     <button type="button" class="btn btn-danger">Danger</button>
     <button type="button" class="btn btn-warning">Warning</button>
     <button type="button" class="btn btn-info">Info</button>
-
+  </div>
 
 
     <canvas id="myChart"></canvas>
