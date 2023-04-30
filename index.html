@@ -14,16 +14,19 @@
 
 <body>
 
-    <body>
     <header>
         <h1>COVID-19 Tracker</h1>
       </header>
-
+<main>
     <!-- Contenedor del selector de país -->
 <div class="search-container">
     <label for="select-country">Seleccionar país:</label>
     <select id="select-country"></select>
   </div>
+
+  <div class="loader-container">
+    <div class="spiner"></div>
+</div>
   
   <!-- Contenedor del gráfico -->
   <div class="chart-container">
@@ -42,6 +45,15 @@
 
 
     <canvas id="myChart"></canvas>
+</main>
+
+<footer>
+    <p>
+      Datos obtenidos de <a href="https://covid19api.com/" target="_blank"
+        >https://covid19api.com/</a
+      >
+    </p>
+  </footer>
 
     <!-- Links para bootstrap local-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -53,5 +65,4 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
-
 </html>
