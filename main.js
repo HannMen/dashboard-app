@@ -4,6 +4,11 @@ const myChart = document.getElementById("myChart");
 const confirmedBtn = document.getElementById("confirmed-btn");
 const recoveredBtn = document.getElementById("recovered-btn");
 const deathsBtn = document.getElementById("deaths-btn");
+const defaultOption = document.createElement("option");
+defaultOption.text = "Selecciona un país de la lista";
+defaultOption.disabled = true;
+defaultOption.selected = true;
+selectCountry.add(defaultOption);
 
 // Configuración inicial del gráfico
 const chart = new Chart(myChart, {
@@ -79,6 +84,9 @@ function updateChartData(countrySlug, dataType) {
 selectCountry.addEventListener("change", event => {
   const countrySlug = event.target.value;
   updateChartData(countrySlug, "confirmed");
+  if (event.target.value !== "") {
+    defaultOption.disabled = true;
+  }
 });
 
 // Event listeners para actualizar el gráfico según el botón presionado
