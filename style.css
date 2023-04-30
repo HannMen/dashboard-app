@@ -1,21 +1,50 @@
-.loader-container {
-    height: 100%;
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  /* Estilos para el selector de país */
+  .search-container {
+    margin: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    display: block;
     width: 100%;
-    top: 0%;
-    left: 0%;
-    background-color: rgba(78, 78, 78, 0.5);
-    position: absolute;
-    display: none;
-}
-
-.spiner {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: calc(50% - 25px);
-    left: calc(50% - 25px);
-    border-radius: 50%;
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid #3498db;
-    animation: spin 2s linear infinite;
-}
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para el contenedor del gráfico */
+  .chart-container {
+    margin: 20px;
+  }
+  
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Estilos para los botones */
+  .button-container {
+    margin: 20px;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  
