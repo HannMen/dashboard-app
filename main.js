@@ -42,6 +42,33 @@ const chart = new Chart(myChart, {
   },
 });
 
+// Función para obtener los datos de COVID-19 del país seleccionado y actualizar el gráfico
+const updateChartData = (countrySlug, dataType) => {
+  axios
+    .get(
+      `https://api.covid19api.com/country/${countrySlug}?from=2020-01-01T00:00:00Z&to=2022-05-01T00:00:00Z`
+    )
+    .then((response) => {
+      const data = response.data;
+      const labels = data.map((d) => d.Date.slice(0, 7));
+      const values = data.map((d) => d[dataType]);
+      chart.data.labels = labels;
+      switch (dataType) {
+        case "Confirmed":
+          chart.data.datasets[0].data = values;
+          break;
+        case "Recovered":
+          chart.data.datasets[1].data = values;
+          break;
+        case "Deaths":
+          chart.data.datasets[2].data = values;
+          break;
+      }
+      chart.update();
+    })
+    .catch((error) => console.log(error));
+};
+
 // Obtener la lista de países y agregarlos al menú desplegable
 axios
   .get("https://api.covid19api.com/countries")
@@ -57,37 +84,10 @@ axios
   })
   .catch((error) => console.log(error));
 
-// Función para obtener los datos de COVID-19 del país seleccionado y actualizar el gráfico
-function updateChartData(countrySlug, dataType) {
-  axios
-    .get(
-      `https://api.covid19api.com/total/dayone/country/${countrySlug}/status/${dataType}`
-    )
-    .then((response) => {
-      const data = response.data;
-      const labels = data.map((d) => d.Date);
-      const values = data.map((d) => d.Cases || d.Recovered || d.Deaths);
-      chart.data.labels = labels;
-      switch (dataType) {
-        case "confirmed":
-          chart.data.datasets[0].data = values;
-          break;
-        case "recovered":
-          chart.data.datasets[1].data = values;
-          break;
-        case "deaths":
-          chart.data.datasets[2].data = values;
-          break;
-      }
-      chart.update();
-    })
-    .catch((error) => console.log(error));
-}
-
 // Event listener para actualizar el gráfico cuando se selecciona un país
 selectCountry.addEventListener("change", (event) => {
   const countrySlug = event.target.value;
-  updateChartData(countrySlug, "confirmed");
+  updateChartData(countrySlug, "Confirmed");
   if (event.target.value !== "") {
     defaultOption.disabled = true;
   }
@@ -96,15 +96,15 @@ selectCountry.addEventListener("change", (event) => {
 // Event listeners para actualizar el gráfico según el botón presionado
 confirmedBtn.addEventListener("click", () => {
   const countrySlug = selectCountry.value;
-  updateChartData(countrySlug, "confirmed");
+  updateChartData(countrySlug, "Confirmed");
 });
 
 recoveredBtn.addEventListener("click", () => {
   const countrySlug = selectCountry.value;
-  updateChartData(countrySlug, "recovered");
+  updateChartData(countrySlug, "Recovered");
 });
 
 deathsBtn.addEventListener("click", () => {
   const countrySlug = selectCountry.value;
-  updateChartData(countrySlug, "deaths");
-});
+  updateChartData(countrySlug, "Deaths");
+  });
