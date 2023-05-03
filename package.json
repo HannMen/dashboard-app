@@ -1,7 +1,30 @@
 {
+  "name": "dashboard-app",
+  "version": "1.0.0",
+  "description": "Dashboard app for tracking COVID-19 cases",
+  "main": "main.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [
+    "dashboard",
+    "COVID-19",
+    "cases",
+    "tracking"
+  ],
+  "author": "Grupo Ucampers",
+  "license": "MIT",
   "dependencies": {
+    "@popperjs/core": "^2.11.7",
     "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
     "chart": "^0.1.2",
-    "chart.js": "^4.3.0"
+    "chart.js": "^4.3.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }
