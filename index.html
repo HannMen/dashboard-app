@@ -21,16 +21,22 @@
     <main>
       <!-- Contenedor del selector de país y fechas -->
       <div class="search-container">
-        <label for="select-country">Seleccionar país:</label>
-        <select id="select-country"></select>
+        <div>
+          <label for="select-country">Selecciona un país:</label>
+          <select id="select-country"></select>
+        </div>
         
-        <label for="from-date">Desde:</label>
-        <input type="date" id="from-date" name="from-date">
-        
-        <label for="to-date">Hasta:</label>
-        <input type="date" id="to-date" name="to-date">
+        <div>
+          <label for="select-time">Selecciona un rango de tiempo:</label>
+          <select id="select-time">
+            <option value="last-week">Última semana</option>
+            <option value="last-month">Último mes</option>
+            <option value="last-3-months">Últimos 3 meses</option>
+            <option value="last-6-months">Últimos 6 meses</option>
+            <option value="last-year">Último año</option>
+          </select>
+        </div>
       </div>
-
       <!-- Contenedor del gráfico -->
       <div class="chart-container">
         <canvas id="myChart"></canvas>
@@ -48,8 +54,6 @@
           Fallecidos
         </button>
       </div>
-
-      <canvas id="myChart"></canvas>
     </main>
 
     <footer>
