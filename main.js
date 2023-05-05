@@ -14,24 +14,24 @@ selectCountry.add(defaultOption);
 const chart = new Chart(myChart, {
   type: "line",
   data: {
-    labels: [],
+    labels: ['2020', '2021', '2022', '2023'],
     datasets: [
       {
         label: "Confirmados",
         data: [],
-        borderColor: "#007bff",
+        backgroundColor: "#007bff",
         fill: false,
       },
       {
         label: "Recuperados",
         data: [],
-        borderColor: "#6c757d",
+        backgroundColor: "#297e46",
         fill: false,
       },
       {
         label: "Fallecidos",
         data: [],
-        borderColor: "#dc3545",
+        backgroundColor: "#dc3545",
         fill: false,
       },
     ],

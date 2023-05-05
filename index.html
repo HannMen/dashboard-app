@@ -7,6 +7,12 @@
     <title>Covid Tracker</title>
     <!-- Link para estilos css propios -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300&display=swap" rel="stylesheet">    
     <!-- Link para estilos de bootstrap -->
     <link
       rel="stylesheet"
@@ -16,34 +22,36 @@
 
   <body>
     <header>
-      <h1>COVID-19 Tracker</h1>
+      <div class="image">
+        <h1>COVID-19 Tracker</h1>
+      </div>
     </header>
     <main>
-      <!-- Contenedor del selector de país -->
-      <div class="search-container">
-        <label for="select-country">Seleccionar país:</label>
-        <select id="select-country"></select>
-      </div>
+      <div class="tabla">
+        <!-- Contenedor del selector de país -->
+        <div class="search-container">
+          <label class="paises" for="select-country">Seleccionar país:</label>
+          <select id="select-country"></select>
+        </div>
 
-      <!-- Contenedor del gráfico -->
-      <div class="chart-container">
-        <canvas id="myChart"></canvas>
-      </div>
+        <!-- Contenedor del gráfico -->
+        <div class="chart-container">
+          <canvas id="myChart" height="450" width="900"></canvas>
+        </div>
 
-      <!-- Botones -->
-      <div class="button-container">
-        <button type="button" class="btn btn-primary" id="confirmed-btn">
-          Confirmados
-        </button>
-        <button type="button" class="btn btn-secondary" id="recovered-btn">
-          Recuperados
-        </button>
-        <button type="button" class="btn btn-danger" id="deaths-btn">
-          Fallecidos
-        </button>
+        <!-- Botones -->
+        <div class="button-container">
+          <button type="button" class="btn btn-primary" id="confirmed-btn">
+            Confirmados
+          </button>
+          <button type="button" class="btn btn-secondary" id="recovered-btn">
+            Recuperados
+          </button>
+          <button type="button" class="btn btn-danger" id="deaths-btn">
+            Fallecidos
+          </button>
+        </div>
       </div>
-
-      <canvas id="myChart"></canvas>
     </main>
 
     <footer>
