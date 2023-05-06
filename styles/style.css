@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+header {
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 3rem;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(350deg, rgba(13, 199, 162, 0.5), rgba(13, 106, 199, 0.5)), url(https://gacetamedica.com/wp-content/uploads/2020/08/GettyImages-1209688759.jpg);
+}
+
+.tabla {
+  padding: 80;
+  margin: 80;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.paises {
+  margin: 1rem;
+}
+
+select {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  box-shadow: 0 0 0 1px #ced4da;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.chart-container {
+  max-width: 900px;
+  background-color: #fff;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+footer {
+  background-color: #142231;
+  color: #fbfdfc;
+  padding: 1rem;
+  text-align: center;
+}
+
+a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  color: white;
+  margin-right: 1rem;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.btn-secondary {
+  background-color: #297e46;
+  border-color: #297e46;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
