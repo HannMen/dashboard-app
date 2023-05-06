@@ -45,7 +45,7 @@ const chart = new Chart(myChart, {
 // Obtener la lista de países y agregarlos al menú desplegable
 axios
   .get("https://api.covid19api.com/countries")
-  .then((response) => {
+  .then(async (response) => {
     const countries = response.data;
     countries.sort((a, b) => (a.Country > b.Country ? 1 : -1));
     countries.forEach((country) => {
@@ -58,30 +58,28 @@ axios
   .catch((error) => console.log(error));
 
 // Función para obtener los datos de COVID-19 del país seleccionado y actualizar el gráfico
-function updateChartData(countrySlug, dataType) {
-  axios
-    .get(
-      `https://api.covid19api.com/total/dayone/country/${countrySlug}/status/${dataType}`
-    )
-    .then((response) => {
-      const data = response.data;
-      const labels = data.map((d) => d.Date);
-      const values = data.map((d) => d.Cases || d.Recovered || d.Deaths);
-      chart.data.labels = labels;
-      switch (dataType) {
-        case "confirmed":
-          chart.data.datasets[0].data = values;
-          break;
-        case "recovered":
-          chart.data.datasets[1].data = values;
-          break;
-        case "deaths":
-          chart.data.datasets[2].data = values;
-          break;
-      }
-      chart.update();
-    })
-    .catch((error) => console.log(error));
+async function updateChartData(countrySlug, dataType) {
+  try {
+    const response = await axios.get(`https://api.covid19api.com/total/dayone/country/${countrySlug}/status/${dataType}`);
+    const data = response.data;
+    const labels = data.map((d) => d.Date);
+    const values = data.map((d) => d.Cases || d.Recovered || d.Deaths);
+    chart.data.labels = labels;
+    switch (dataType) {
+      case "confirmed":
+        chart.data.datasets[0].data = values;
+        break;
+      case "recovered":
+        chart.data.datasets[1].data = values;
+        break;
+      case "deaths":
+        chart.data.datasets[2].data = values;
+        break;
+    }
+    chart.update();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // Event listener para actualizar el gráfico cuando se selecciona un país
