@@ -54,13 +54,13 @@ const chart = new Chart(document.getElementById("myChart"), {
   },
 });
 
-const updateChartData = (
+const updateChartData = async (
   countryCode,
   dataType,
   startDateString,
   endDateString
-) => {
-  axios
+) => { try {
+  const response = await axios
     .get(
       `https://corona.lmao.ninja/v2/historical/${countryCode}?start_date=${startDateString}&end_date=${endDateString}`
     )
@@ -77,10 +77,10 @@ const updateChartData = (
         console.log("Data not available");
       }
     })
-    .catch((error) => {
-      console.log(error);
-      alert("Error fetching data");
-    });
+  } catch (error) {
+    console.log(error);
+    alert("Error fetching data");
+  }
 };
 
 selectCountry.addEventListener("change", () => {
