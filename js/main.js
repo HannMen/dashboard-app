@@ -30,15 +30,15 @@ const chart = new Chart(document.getElementById("myChart"), {
   },
   options: {
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-  },
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 100
+        }
+      }]
+    }
+  }
+  ,
 });
 
 const updateChartData = (countryCode, dataType, startDateString, endDateString) => {
