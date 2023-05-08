@@ -5,17 +5,21 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   background-color: #f5f5f5;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 header {
   color: #fff;
   padding: 0;
   margin: 0;
+}
+
+.titulo {
+  font-size: 6rem;
 }
 
 .image {
@@ -25,11 +29,15 @@ header {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: 'Lexend Deca', sans-serif;
-  font-size: 3rem;
+  font-family: "Lexend Deca", sans-serif;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(350deg, rgba(13, 199, 162, 0.5), rgba(13, 106, 199, 0.5)), url(https://gacetamedica.com/wp-content/uploads/2020/08/GettyImages-1209688759.jpg);
+  background-image: linear-gradient(
+      350deg,
+      rgba(13, 199, 162, 0.5),
+      rgba(13, 106, 199, 0.5)
+    ),
+    url(https://gacetamedica.com/wp-content/uploads/2020/08/GettyImages-1209688759.jpg);
 }
 
 .tabla {
@@ -57,25 +65,26 @@ main {
   margin: 1rem;
 }
 
+.tiempo {
+  margin: 1rem;
+}
+
 select {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   border: none;
   box-shadow: 0 0 0 1px #ced4da;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .chart-container {
   max-width: 900px;
   height: 400px;
   background-color: #fff;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
-
-
 
 footer {
   background-color: #142231;
@@ -111,7 +120,7 @@ a:hover {
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
@@ -119,7 +128,7 @@ a:hover {
 .btn-secondary {
   background-color: #297e46;
   border-color: #297e46;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
@@ -127,11 +136,10 @@ a:hover {
 .btn-danger {
   background-color: #dc3545;
   border-color: #dc3545;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
-
 
 @keyframes spin {
   0% {
