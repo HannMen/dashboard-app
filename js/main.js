@@ -9,6 +9,8 @@ defaultOption.text = "Selecciona un país de la lista";
 defaultOption.disabled = true;
 defaultOption.selected = true;
 selectCountry.add(defaultOption);
+// import { loadCountries, updateChartData } from "./covid.js";
+
 
 // Configuración inicial del gráfico
 const chart = new Chart(myChart, {
@@ -42,9 +44,9 @@ const chart = new Chart(myChart, {
   },
 });
 
-// Obtener la lista de países y agregarlos al menú desplegable
+// // Obtener la lista de países y agregarlos al menú desplegable
 axios
-  .get("https://api.covid19api.com/countries")
+  .get("https://corona.lmao.ninja/v2/countries?yesterday&sort")
   .then(async (response) => {
     const countries = response.data;
     countries.sort((a, b) => (a.Country > b.Country ? 1 : -1));
@@ -57,10 +59,11 @@ axios
   })
   .catch((error) => console.log(error));
 
+
 // Función para obtener los datos de COVID-19 del país seleccionado y actualizar el gráfico
 async function updateChartData(countrySlug, dataType) {
   try {
-    const response = await axios.get(`https://api.covid19api.com/total/dayone/country/${countrySlug}/status/${dataType}`);
+    const response = await axios.get(`https://corona.lmao.ninja/v2/historical/${countryCode}?start_date=${startDateString}&end_date=${endDateString}`);
     const data = response.data;
     const labels = data.map((d) => d.Date);
     const values = data.map((d) => d.Cases || d.Recovered || d.Deaths);
@@ -106,3 +109,6 @@ deathsBtn.addEventListener("click", () => {
   const countrySlug = selectCountry.value;
   updateChartData(countrySlug, "deaths");
 });
+
+// loadCountries();
+
