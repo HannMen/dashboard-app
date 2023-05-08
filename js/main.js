@@ -48,18 +48,23 @@ const updateChartData = (countryCode, dataType, startDateString, endDateString) 
     )
     .then((response) => {
       const data = response.data.timeline[dataType];
-      const labels = Object.keys(data);
-      const values = Object.values(data);
-      chart.data.labels = labels;
-      chart.data.datasets[0].label = dataType;
-      chart.data.datasets[0].data = values;
-      chart.update();
+      if (data) {
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+        chart.data.labels = labels;
+        chart.data.datasets[0].label = dataType;
+        chart.data.datasets[0].data = values;
+        chart.update();
+      } else {
+        console.log("Data not available");
+      }
     })
     .catch((error) => {
       console.log(error);
       alert("Error fetching data");
     });
 };
+
 
 selectCountry.addEventListener("change", () => {
   const countryCode = selectCountry.value;
