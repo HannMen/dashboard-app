@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid Tracker</title>
     <!-- Link para estilos css propios -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300&display=swap" rel="stylesheet">    
+=======
+    <link rel="stylesheet" href="./css/style.css" />
+>>>>>>> sebastian
     <!-- Link para estilos de bootstrap -->
     <link
       rel="stylesheet"
@@ -27,6 +31,7 @@
       </div>
     </header>
     <main>
+<<<<<<< HEAD
       <div class="tabla">
         <!-- Contenedor del selector de país -->
         <div class="search-container">
@@ -38,6 +43,30 @@
         <div class="chart-container">
           <canvas id="myChart" height="450" width="900"></canvas>
         </div>
+=======
+      <!-- Contenedor del selector de país y fechas -->
+      <div class="search-container">
+        <div>
+          <label for="select-country">Selecciona un país:</label>
+          <select id="select-country"></select>
+        </div>
+        
+        <div>
+          <label for="select-time">Selecciona un rango de tiempo:</label>
+          <select id="select-time">
+            <option value="last-week">Última semana</option>
+            <option value="last-month">Último mes</option>
+            <option value="last-3-months">Últimos 3 meses</option>
+            <option value="last-6-months">Últimos 6 meses</option>
+            <option value="last-year">Último año</option>
+          </select>
+        </div>
+      </div>
+      <!-- Contenedor del gráfico -->
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+>>>>>>> sebastian
 
         <!-- Botones -->
         <div class="button-container">
